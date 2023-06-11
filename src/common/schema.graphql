@@ -1,0 +1,12 @@
+type AccessToken {
+    accessToken: String!
+}
+
+input Login {
+    username: String!
+    pass: String!
+}
+
+type Mutation {
+    login(input: Login!) : AccessToken
+}

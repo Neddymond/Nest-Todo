@@ -1,0 +1,42 @@
+type Todo {
+    id: ID!
+    title: String!
+    description: String!
+    completed: Boolean!
+}
+
+type Meta {
+    total: String
+    currentPage: String
+    perPage: String
+}
+
+type AllTodo {
+    todos: [Todo!]!,
+    meta: Meta!
+}
+
+input NewTodo {
+    title: String!
+    description: String
+}
+
+input SearchTodo {
+    title: String
+    description: String
+}
+
+input QueryTodo {
+    page: String
+    perPage: String
+}
+
+type Query {
+    todos(input: QueryTodo) : AllTodo
+    todo(id: ID!) : Todo
+    searchTodo(input: SearchTodo) : AllTodo
+}
+
+type Mutation {
+    createTodo(input: NewTodo): Todo!
+}
